@@ -6,8 +6,9 @@ build-backend = "hatchling.build"
 name = "waqi-python-client"
 version = "0.0.1"
 authors = [
-  { name="Nonso Mgbechi", email="mgbechinonso@gmail.com" },
-  { name="Niyi Omotoso", email="omoniyiomotoso@gmail.com" },
+    { name="Nonso Mgbechi", email="mgbechinonso@gmail.com" },
+    { name="Niyi Omotoso", email="omoniyiomotoso@gmail.com" },
+    { name="Andrey Sinitsyn", email="ollamh+waqi@gmail.com" },
 ]
 description = "Python client library for the World Air Quality Index (WAQI) APIs"
 readme = "README.md"
@@ -17,7 +18,27 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "requests",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/waqi-dev-community/waqi-python-client"
 "Bug Tracker" = "https://github.com/waqi-dev-community/waqi-python-client/issues"
+
+[tool.hatch.build]
+packages = ["src/waqi_python_client"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/waqi_python_client"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]

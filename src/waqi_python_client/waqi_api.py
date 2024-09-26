@@ -1,4 +1,6 @@
-from entities import CityFeed, IPFeed, Search, GeoFeed, MapStation
+from .entities import CityFeed, IPFeed, Search, GeoFeed, MapStation
+
+
 # Factory class for creating API objects
 class WaqiAPI:
     def __init__(self, api_key):

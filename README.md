@@ -5,7 +5,16 @@ All available API modules are supported - City feed, Geolocalized feed, Search, 
 
 ### Installation
 
-Coming soon...
+The project is managed using Hatch ([documentation](https://hatch.pypa.io/latest/install/)). After Hatch is installed, proceed with commands   
+
+```bash
+
+hatch env create  # Creates virtual environment
+hatch shell  # Enable virtual environment 
+hatch build .  # Builds the package wheel and sdist artifacts
+```
+
+It will provide the sdist and wheel artifacts that later can be installed via `pip`.
 
 ### Get API key
 
@@ -15,8 +24,11 @@ Sign up for an API key [here](https://aqicn.org/data-platform/token/)
 
 The primary `WaqiAPI` class in the `waqi_api` module is a factory class that creates objects for each of the API modules, allowing you to make requests to any of them with your desired request parameters. You have to first create an object for it, then access your desired API module via the object. See the code snippets below:
 
-```py
-from waqi_api import WaqiAPI
+```python
+
+WAQI_TOKEN = 'Obtained API key'
+
+from waqi_python_client.waqi_api import WaqiAPI
 
 api = WaqiAPI(WAQI_TOKEN)
 ```
@@ -49,4 +61,11 @@ response = api.ip_feed().set_ip("MY_IP").fetch()
 
 ```py
 response = api.map_station().set_map_bounds(40.712, -74.006, 34.052, -118.243).fetch()
+```
+
+## Tests
+
+```bash
+hatch shell
+hatch test
 ```
